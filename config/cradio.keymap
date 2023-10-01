@@ -7,8 +7,8 @@
 
 // Layer definitions
 #define BASE 0
-#define SYM  1
-#define NUM  2
+#define NUM  1
+#define SYM  2
 #define SETTINGS 3
 
 
