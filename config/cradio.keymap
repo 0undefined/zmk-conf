@@ -7,9 +7,10 @@
 
 // Layer definitions
 #define BASE 0
-#define NUM  1
-#define SYM  2
-#define SETTINGS 3
+#define SYM  1
+#define NUM  2
+#define NAV  3
+#define SETTINGS 4
 
 
 // Home row mods macro
@@ -52,41 +53,58 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt SYM TAB &kp SPACE     &kp ENTER  &lt NUM BSPC
+                                             &kp TAB    &kp SPACE      &kp ENTER  &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
-        right_layer {
+        sym_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │          │          │  \       │          │   │          │  "       │  '       │  `       │          │
+            &trans     &trans     &trans   &kp BACKSLASH &trans        &trans     &kp DQT    &kp SQT    &kp GRAVE  &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  ^       │  +       │  (       │  )       │  @       │   │  |       │  -       │  =       │  _       │ $        │
+            HRML(CARET,    PLUS,      LPAR,      RPAR)  &kp AT         &kp PIPE   HRMR(MINUS,    EQUAL,     UNDER,     DLLR)
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ !        │  #       │  {       │  }       │  ~       │   │  &       │  [       │  ]       │  %       │  *       │
+           &kp EXCL    &kp HASH   &kp LBRC   &kp RBRC   &kp TILDE      &kp AMPS   &kp LBKT   &kp RBKT   &kp PRCNT  &kp ASTRK
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &to BASE   &kp ESC        &kp BSPC   &to NUM
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        num_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │          │          │          │          │
             &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
-            &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0
+            HRML(N1,       N2,        N3,        N4)    &kp N5         &kp N6     HRMR(N7,       N8,        N9,        N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
             &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans         &trans     &trans
+                                             &to BASE   &kp ESC        &kp BSPC   &to NAV
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
-        left_layer {
+        nav_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │  \       │          │   │          │  "       │  '       │          │          │
-            &trans     &trans     &trans   &kp BACKSLASH &trans        &trans     &kp DQT    &kp SQT    &trans     &trans
+        //│          │          │          │          │          │   │          │          │          │          │          │
+            &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &trans     &trans     &trans     &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  $       │  +       │  (       │  )       │  @       │   │  |       │  -       │  =       │ _        │  *       │
-            &kp DLLR   &kp PLUS   &kp LPAR   &kp RPAR   &kp AT         &kp PIPE   &kp MINUS  &kp EQUAL &kp UNDER   &kp ASTRK
+        //│          │          │          │          │          │   │  ←       │  ↓       │  ↑       │  →       │          │
+           HRML(F6,        F7,        F8,        F9)    &kp F10        &kp LEFT   HRMR(DOWN,    UP,     RIGHT,     ENTER)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ !        │  #       │  {       │  }       │  ~       │   │  &       │  [       │  ]       │  %       │  ^       │
-           &kp EXCL    &kp HASH   &kp LBRC   &kp RBRC   &kp TILDE      &kp AMPS   &kp LBKT   &kp RBKT   &kp PRCNT  &kp CARET
+        //│          │          │          │          │          │   │          │          │          │          │          │
+            &kp F11    &kp F12    &kp F13    &kp F14     &kp F15         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &kp ESC        &trans     &trans
+                                             &to BASE   &kp ESC        &kp BSPC   &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
