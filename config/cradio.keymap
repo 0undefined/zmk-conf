@@ -40,6 +40,28 @@
     //         then-layer = <SETTINGS>;
     //     };
     // };
+    combos {
+      compatible = "zmk,combos";
+      combo_compose {
+        timeout-ms = <50>;
+        key-positions = <32 33>;
+        bindings = <&kp LALT>;
+        layers = <0 1>;
+      };
+    };
+
+
+    macros {
+        escape_to_layer: escape_to_layer {
+            label = "escape_to_layer";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp ESC>
+                , <&macro_tap &to BASE>
+                ;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
