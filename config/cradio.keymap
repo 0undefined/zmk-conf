@@ -58,7 +58,7 @@
       combo_compose {
         timeout-ms = <150>;
         key-positions = <31 32>;
-        bindings = <&kp LALT>;
+        bindings = <&kp RALT>;
         layers = <0 1>;
       };
 
