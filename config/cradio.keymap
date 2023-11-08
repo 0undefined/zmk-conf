@@ -40,20 +40,10 @@
     //         then-layer = <SETTINGS>;
     //     };
     // };
-    combos {
-      compatible = "zmk,combos";
-      combo_compose {
-        timeout-ms = <50>;
-        key-positions = <32 33>;
-        bindings = <&kp LALT>;
-        layers = <0 1>;
-      };
-    };
-
 
     macros {
-        escape_to_layer: escape_to_layer {
-            label = "escape_to_layer";
+        esc: esc {
+            label = "esc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -61,6 +51,23 @@
                 , <&macro_tap &to BASE>
                 ;
         };
+    };
+
+    combos {
+      compatible = "zmk,combos";
+      combo_compose {
+        timeout-ms = <150>;
+        key-positions = <31 32>;
+        bindings = <&kp LALT>;
+        layers = <0 1>;
+      };
+
+      combo_esc {
+        timeout-ms = <150>;
+        key-positions = <30 33>;
+        bindings = <&esc>;
+        layers = <0 1>;
+      };
     };
 
     keymap {
@@ -94,7 +101,7 @@
         //│ !        │  #       │  {       │  }       │  ~       │   │  &       │  [       │  ]       │  %       │  *       │
            &kp EXCL    &kp HASH   &kp LBRC   &kp RBRC   &kp TILDE      &kp AMPS   &kp LBKT   &kp RBKT   &kp PRCNT  &kp ASTRK
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &escape_to_layer &kp BSPC   &to NUM
+                                             &to BASE   &esc           &kp BSPC   &to NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -111,7 +118,7 @@
         //│          │          │          │          │          │   │          │          │          │          │          │
             &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &escape_to_layer &kp BSPC   &to NAV
+                                             &to BASE   &esc           &kp BSPC   &to NAV
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -128,7 +135,7 @@
         //│          │          │          │          │          │   │          │          │          │          │          │
             &kp F11    &kp F12    &kp F13    &kp F14    &kp F15        &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &escape_to_layer &kp BSPC   &to SYM
+                                             &to BASE   &esc           &kp BSPC   &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
