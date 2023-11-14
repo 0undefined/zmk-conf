@@ -92,8 +92,8 @@
         sym_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │  / ?     │  \       │  `       │   │  :       │  ;       │  "       │  '       │          │
-            &trans    &trans      &kp FSLH &kp BACKSLASH &kp GRAVE      &kp COLON  &kp SEMI   &kp DQT    &kp SQT    &trans
+        //│          │ ?        │  /       │  \       │  `       │   │  :       │  ;       │  "       │  '       │          │
+            &trans    &kp QMARK   &kp FSLH &kp BACKSLASH &kp GRAVE      &kp COLON  &kp SEMI   &kp DQT    &kp SQT    &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  ^       │  +       │  (       │  )       │  @       │   │  |       │  -       │  =       │  _       │ $        │
            HRMLS(CARET,    PLUS,      LPAR,      RPAR)  &kp AT         &kp PIPE  HRMRS(MINUS,    EQUAL,     UNDER,     DLLR)
