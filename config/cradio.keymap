@@ -33,6 +33,18 @@
         };
     };
 
+    macros {
+        present: present {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp F14>
+                , <&macro_release &kp LGUI>
+                ;
+        };
+    };
+
     // conditional_layers {
     //     compatible = "zmk,conditional-layers";
     //     tri_layer {
@@ -47,12 +59,12 @@
       combo_startl {
         timeout-ms = <150>;
         key-positions = <4 14>;
-        bindings = <&kp F14>;
+        bindings = <&present>;
       };
       combo_startr {
         timeout-ms = <150>;
         key-positions = <5 15>;
-        bindings = <&kp F14>;
+        bindings = <&present>;
       };
 
       combo_presentl {
