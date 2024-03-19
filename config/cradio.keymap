@@ -75,7 +75,7 @@
         timeout-ms = <150>;
         // t + y
         key-positions = <4 5>;
-        bindings = <&bootloader>;
+        bindings = <&to SETTINGS>;
         layers = <NAV>;
       };
 
