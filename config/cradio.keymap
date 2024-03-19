@@ -18,6 +18,7 @@
 #define HRMR(k1,k2,k3) &ht RGUI     k1  &ht RCTRL k2  &ht LALT  k3
 #define HRMLS(k1,k2,k3,k4) &ht LSHIFT  k1  &ht LALT  k2  &ht LCTRL k3  &ht LGUI  k4
 #define HRMRS(k1,k2,k3,k4) &ht RGUI    k1  &ht RCTRL k2  &ht LALT  k3 &ht RSHIFT k4
+#define SHIFT &hl LSHIFT SETTINGS
 
 / {
     behaviors {
@@ -30,6 +31,17 @@
             quick-tap-ms = <150>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
+        };
+
+        hl: hold_tap {
+            label = "hold_tap";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&kp>, <&to>;
         };
     };
 
@@ -121,7 +133,7 @@
         //│  !       │  #       │  {       │  }       │  ~       │   │  &       │  [       │  ]       │  %       │          │
             &kp EXCL   &kp HASH   &kp LBRC   &kp RBRC   &kp TILDE      &kp AMPS   &kp LBKT   &kp RBKT   &kp PRCNT  &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &esc           &kp SPACE  &to NUM
+                                             SHIFT      &esc           &kp SPACE  &to NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -139,7 +151,7 @@
         //│          │          │          │          │          │   │          │          │          │          │          │
             &none      &none      &none      &none      &none          &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &esc           &kp SPACE  &to NAV
+                                             SHIFT      &esc           &kp SPACE  &to NAV
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -157,7 +169,7 @@
         //│          │          │          │          │          │   │          │          │          │          │          │
             &kp F11    &kp F12    &kp F13    &kp F14    &kp F15        &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &to BASE   &esc           &kp SPACE  &to SYM
+                                             SHIFT      &esc           &kp SPACE  &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
