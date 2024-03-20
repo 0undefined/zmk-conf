@@ -18,29 +18,25 @@
 #define HRMR(k1,k2,k3) &ht RGUI     k1  &ht RCTRL k2  &ht LALT  k3
 #define HRMLS(k1,k2,k3,k4) &ht LSHIFT  k1  &ht LALT  k2  &ht LCTRL k3  &ht LGUI  k4
 #define HRMRS(k1,k2,k3,k4) &ht RGUI    k1  &ht RCTRL k2  &ht LALT  k3 &ht RSHIFT k4
-#define SHIFT &hl LSHIFT SETTINGS
+#define SHIFT &hl LSHIFT BASE
 
 / {
     behaviors {
         ht: hold_tap {
-            label = "hold_tap";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
-            global-quick-tap;
             bindings = <&kp>, <&kp>;
         };
 
-        hl: hold_tap {
-            label = "hold_tap";
+        hl: hold_layer {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
             flavor = "tap-preferred";
+            #binding-cells = <2>;
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
-            global-quick-tap;
             bindings = <&kp>, <&to>;
         };
     };
