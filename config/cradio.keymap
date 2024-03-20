@@ -23,24 +23,20 @@
 / {
     behaviors {
         ht: hold_tap {
-            label = "hold_tap";
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
-            global-quick-tap;
             bindings = <&kp>, <&kp>;
         };
 
-        hl: hold_tap {
-            label = "hold_tap";
+        hl: hold_layer {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
             flavor = "tap-preferred";
+            #binding-cells = <2>;
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
-            global-quick-tap;
             bindings = <&kp>, <&to>;
         };
     };
