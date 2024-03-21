@@ -18,7 +18,7 @@
 #define HRMR(k1,k2,k3) &ht RGUI     k1  &ht RCTRL k2  &ht LALT  k3
 #define HRMLS(k1,k2,k3,k4) &ht LSHIFT  k1  &ht LALT  k2  &ht LCTRL k3  &ht LGUI  k4
 #define HRMRS(k1,k2,k3,k4) &ht RGUI    k1  &ht RCTRL k2  &ht LALT  k3 &ht RSHIFT k4
-#define SHIFT &hl LSHIFT SETTINGS
+#define SHIFT &hl LSHIFT BASE
 
 / {
     behaviors {
