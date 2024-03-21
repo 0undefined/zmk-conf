@@ -25,7 +25,7 @@
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             tapping-term-ms = <220>;
             require-prior-idle-ms = <135>;
             quick-tap-ms = <190>;
@@ -34,7 +34,7 @@
 
         hl: hold_layer {
             compatible = "zmk,behavior-hold-tap";
-            flavor = "tap-preferred";
+            flavor = "balanced";
             #binding-cells = <2>;
             tapping-term-ms = <220>;
             quick-tap-ms = <190>;
