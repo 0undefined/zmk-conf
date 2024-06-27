@@ -14,15 +14,16 @@
 
 
 // Home row mods macro
-#define HRML(k1,k2,k3) &ht LALT     k1  &ht LCTRL k2  &ht LGUI  k3
-#define HRMR(k1,k2,k3) &ht RGUI     k1  &ht RCTRL k2  &ht LALT  k3
+#define HRML(k1,k2,k3) &lht LALT     k1  &lht LCTRL k2  &lht LGUI  k3
+#define HRMR(k1,k2,k3) &rht RGUI     k1  &rht RCTRL k2  &rht LALT  k3
 #define HRMLS(k1,k2,k3,k4) &ht LSHIFT  k1  &ht LALT  k2  &ht LCTRL k3  &ht LGUI  k4
 #define HRMRS(k1,k2,k3,k4) &ht RGUI    k1  &ht RCTRL k2  &ht LALT  k3 &ht RSHIFT k4
 #define SHIFT &hl LSHIFT BASE
 
 / {
     behaviors {
-        ht: hold_tap {
+        // left-hold-tap
+        lht: left_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
@@ -30,6 +31,19 @@
             require-prior-idle-ms = <135>;
             quick-tap-ms = <190>;
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <5 6 7 8 9  15 16 17 18 19  25 26 27 28 29>;
+        };
+
+        // left-hold-tap
+        rht: right_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            require-prior-idle-ms = <135>;
+            quick-tap-ms = <190>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <0 1 2 3 4  10 11 12 13 14  20 21 22 23 24>;
         };
 
         hl: hold_layer {
@@ -121,16 +135,16 @@
         sym_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  *       │ ?        │  /       │  \       │  `       │   │  :       │  ;       │  "       │  '       │          │
-            &kp ASTRK  &kp QMARK  &kp FSLH   &kp BACKSLASH &kp GRAVE   &kp COLON  &kp SEMI   &kp DQT    &kp SQT    &trans
+        //│  ~       │  +       │  '       │  ; :     │  ` ~     │   │  / ?     │  :       │  "       │  &       │          │
+            &kp TILDE  &kp PLUS   &kp SQT    &kp SEMI   &kp GRAVE      &kp FSLH   &kp COLON  &kp DQT    &kp AMPS   &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  ^       │  +       │  (       │  )       │  @       │   │  |       │  -       │  =       │  _       │ $        │
-           HRMLS(CARET,    PLUS,      LPAR,      RPAR)  &kp AT         &kp PIPE  HRMRS(MINUS, EQUAL,     UNDER,    DLLR)
+        //│  ^       │  = +     │  (       │  )       │  @       │   │  |       │  [       │  ]       │  %       │  $       │
+            &kp CARET HRML(EQUAL,     LPAR,      RPAR)  &kp AT         &kp PIPE HRMR(LBKT,   RBKT,      PRCNT)     &kp DLLR
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  !       │  #       │  {       │  }       │  ~       │   │  &       │  [       │  ]       │  %       │          │
-            &kp EXCL   &kp HASH   &kp LBRC   &kp RBRC   &kp TILDE      &kp AMPS   &kp LBKT   &kp RBKT   &kp PRCNT  &trans
+        //│  !       │  #       │  {       │  }       │  \       │   │  *       │  - _     │  , <     │  . >     │          │
+            &kp EXCL   &kp HASH   &kp LBRC   &kp RBRC   &kp BSLH       &kp ASTRK  &kp MINUS  &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             SHIFT      &esc           &kp SPACE  &to NUM
+                                             SHIFT      &trans         &trans     &to NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -139,16 +153,16 @@
         num_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │   │          │          │          │          │          │
-            &none      &none      &none      &none      &none          &none      &none      &none      &none      &trans
+        //│  ~       │  +       │  '       │  ; :     │  ` ~     │   │  / ?     │  :       │  "       │  &       │          │
+            &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
-           HRMLS(N1,       N2,        N3,        N4)    &kp N5         &kp N6    HRMRS(N7,       N8,        N9,        N0)
+            &kp N1    HRML(N2,        N3,        N4)    &kp N5         &kp N6    HRMR(N7,        N8,        N9)    &kp N0
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │          │          │          │          │          │
-            &none      &none      &none      &none      &none          &none      &none      &none      &none      &trans
+        //│  !       │  #       │  {       │  }       │  \       │   │  *       │  - _     │  , <     │  . >     │          │
+            &trans     &trans     &trans     &trans     &trans         &kp FSLH   &kp MINUS  &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             SHIFT      &esc           &kp SPACE  &to NAV
+                                             SHIFT      &trans         &trans     &to NAV
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -161,12 +175,12 @@
             &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &none      &none      &none      &none      &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │  ←       │  ↓       │  ↑       │  →       │          │
-          HRMLS(F6,        F7,        F8,        F9)    &kp F10        &kp LEFT  HRMRS(DOWN,    UP,     RIGHT,     ENTER)
+            &kp F6    HRML(F7,        F8,        F9)    &kp F10        &kp LEFT   HRMR(DOWN,    UP,     RIGHT)     &kp ENTER
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
             &kp F11    &kp F12    &kp F13    &kp F14    &kp F15        &none      &none      &none      &none      &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             SHIFT      &esc           &kp SPACE  &to SYM
+                                             SHIFT      &trans         &trans     &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
