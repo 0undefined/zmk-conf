@@ -34,10 +34,10 @@
         lht: left_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
+            flavor = "balanced";
+            tapping-term-ms = <180>;
             require-prior-idle-ms = <135>;
-            quick-tap-ms = <190>;
+            quick-tap-ms = <120>;
             bindings = <&kp>, <&kp>;
             // Hold trigger on opposite side, RHS and shift
             hold-trigger-key-positions = <RHS>;
@@ -47,10 +47,10 @@
         rht: right_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <220>;
+            flavor = "balanced";
+            tapping-term-ms = <180>;
             require-prior-idle-ms = <135>;
-            quick-tap-ms = <190>;
+            quick-tap-ms = <120>;
             bindings = <&kp>, <&kp>;
             // Hold trigger on opposite side, LHS and shift
             hold-trigger-key-positions = <LHS>;
