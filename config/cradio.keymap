@@ -35,9 +35,9 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <180>;
+            tapping-term-ms = <150>;
             require-prior-idle-ms = <135>;
-            quick-tap-ms = <120>;
+            quick-tap-ms = <50>;
             bindings = <&kp>, <&kp>;
             // Hold trigger on opposite side, RHS and shift
             hold-trigger-key-positions = <RHS>;
@@ -48,9 +48,9 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <180>;
+            tapping-term-ms = <150>;
             require-prior-idle-ms = <135>;
-            quick-tap-ms = <120>;
+            quick-tap-ms = <50>;
             bindings = <&kp>, <&kp>;
             // Hold trigger on opposite side, LHS and shift
             hold-trigger-key-positions = <LHS>;
