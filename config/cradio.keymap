@@ -39,8 +39,8 @@
             require-prior-idle-ms = <135>;
             quick-tap-ms = <50>;
             bindings = <&kp>, <&kp>;
-            // Hold trigger on opposite side, RHS and shift
-            hold-trigger-key-positions = <RHS>;
+            // Hold trigger on opposite side, RHS and tab
+            hold-trigger-key-positions = <RHS 31>;
         };
 
         // left-hold-tap
@@ -52,8 +52,8 @@
             require-prior-idle-ms = <135>;
             quick-tap-ms = <50>;
             bindings = <&kp>, <&kp>;
-            // Hold trigger on opposite side, LHS and shift
-            hold-trigger-key-positions = <LHS>;
+            // Hold trigger on opposite side, LHS and tab
+            hold-trigger-key-positions = <LHS 31>;
         };
 
         // Used for shift
