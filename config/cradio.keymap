@@ -65,6 +65,14 @@
             quick-tap-ms = <190>;
             bindings = <&kp>, <&to>;
         };
+
+        // Backspace / delete
+        bsp: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     macros {
