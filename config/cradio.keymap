@@ -33,6 +33,7 @@
               10 11 12 13 14 \
               20 21 22 23 24
 
+// Used to generate combos/alternate shift keycodes
 #define COMBO(code, name, k1, k2) \
   _##code: _##name { \
     compatible = "zmk,behavior-mod-morph"; \
@@ -167,7 +168,7 @@
             &kp C  HRML(I,         E,         A)        &kp COMMA      &kp DOT HRMR(H,        T,         S)        &kp N
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  G       │  X       │  J       │  K       │  BSPC    │   │  ENTER   │  R       │  M       │  F       │  P       │
-            &kp G      &kp X      &kp J      &kp K      &kp BSPC       &kp ENTER  &kp R      &kp M      &kp F      &kp P
+            &kp G      &kp X      &kp J      &kp K      &bsp           &kp ENTER  &kp R      &kp M      &kp F      &kp P
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &kp LSHIFT &kp TAB        &kp SPACE  &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -200,13 +201,13 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &none      &none      &none      &none      &trans
+            &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp HOME   &kp PG_DOWN &kp PG_UP &kp END    &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │  ←       │  ↓       │  ↑       │  →       │          │
-            &kp F6    HRML(F7,        F8,        F9)    &kp F10        &kp LEFT   HRMR(DOWN,    UP,     RIGHT)     &kp ENTER
+            &kp F6    HRML(F7,        F8,        F9)    &kp F10        &kp LEFT   HRMR(DOWN,    UP,     RIGHT)     &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &kp F11    &kp F12    &kp F13    &kp F14    &kp F15        &none      &none      &none      &none      &trans
+            &kp F11    &kp F12    &kp F13    &kp F14    &kp F15        &none      &none      &none      &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              SHIFT      &trans         &trans     &to SYM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
